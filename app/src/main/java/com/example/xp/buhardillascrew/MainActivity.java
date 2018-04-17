@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         principal.addView(auxiliar);
 
         Field[] listaCanciones = R.raw.class.getFields();
-        int columnas = 5;
+        int columnas = 4;
         for (int i=0; i< listaCanciones.length; i++) {
             //creamos un botón por código y lo añadimos a la pantalla principal
             Button b = creaBoton(i, listaCanciones);
