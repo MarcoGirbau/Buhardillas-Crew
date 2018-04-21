@@ -49,24 +49,24 @@ public class MainActivity extends AppCompatActivity {
         /**
          * Show share dialog BOTH image and text
          */
-//        Uri imageUri = Uri.parse("android.resource://"+getPackageName()+"/"+view.getTag());
-//        //Uri imageUri = Uri.parse(pictureFile.getAbsolutePath());
-//        Intent shareIntent = new Intent();
-//        shareIntent.setAction(Intent.ACTION_SEND);
-//        //Target whatsapp:
-//        shareIntent.setPackage("com.whatsapp");
-//        //Add text and then Image URI
-//        shareIntent.putExtra(Intent.EXTRA_TEXT, nombre+".mp3");
-//        shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
-//        shareIntent.setType("audio/mp3");
-//        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//
-//        try {
-//            startActivity(shareIntent);
-//        } catch (android.content.ActivityNotFoundException ex) {
-//           // ToastHelper.MakeShortText("Whatsapp have not been installed.");
-//
-//        }
+        Uri imageUri = Uri.parse("android.resource://"+getPackageName()+"/"+view.getTag());
+        //Uri imageUri = Uri.parse(pictureFile.getAbsolutePath());
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        //Para whatsapp:
+        shareIntent.setPackage("com.whatsapp");
+        //Añadimos texto luego imagen uri
+        shareIntent.putExtra(Intent.EXTRA_TEXT, nombre+".mp3");
+        shareIntent.putExtra(Intent.EXTRA_STREAM, imageUri);
+        shareIntent.setType("audio/mp3");
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        try {
+            startActivity(shareIntent);
+        } catch (android.content.ActivityNotFoundException ex) {
+           // ToastHelper.MakeShortText("Whatsapp have not been installed.");
+
+        }
 
 
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
@@ -124,9 +124,10 @@ public class MainActivity extends AppCompatActivity {
         Button b = new Button(this);
         b.setLayoutParams(parametrosBotones);
         b.setText(_listaCanciones[i].getName());
-        b.setTextColor(Color.WHITE);
-        b.setBackgroundColor(Color.BLUE);
-        b.setAllCaps(false); //todas las letras del botón en minúscula
+        b.setTextSize(10);
+        b.setTextColor(Color.BLACK);
+        b.setBackgroundColor(Color.WHITE);
+        b.setAllCaps(true); //todas las letras del botón en mayuscula
         int id = this.getResources().getIdentifier(_listaCanciones[i].getName(), "raw", this.getPackageName());
         b.setTag(id);
 
@@ -147,4 +148,5 @@ public class MainActivity extends AppCompatActivity {
         });
         return b;
     }
+
 }

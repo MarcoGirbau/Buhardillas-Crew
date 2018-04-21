@@ -9,19 +9,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:id="@+id/Sonido"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <LinearLayout
+                    android:id="@+id/botones"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/botones"
-                    android:orientation="vertical">
-                </LinearLayout>
+                    android:orientation="vertical"></LinearLayout>
             </ScrollView>
         </LinearLayout>
     </LinearLayout>
