@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Color;
+import android.graphics.drawable.Animatable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String SHARED_PROVIDER_AUTHORITY = BuildConfig.APPLICATION_ID + ".myfileprovider";
     private static final String SHARED_FOLDER = "shared";
     MediaPlayer m = new MediaPlayer();
+    int posicion = 0;
 
     public void sonidoCopiar(View view) throws IOException {
         Button b = (Button) findViewById(view.getId());
@@ -100,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         Button b = (Button) findViewById(view.getId());
         String nombre = b.getText().toString();
 
+        if(m.isPlaying())m.stop();
         m = MediaPlayer.create(this, (int) findViewById(view.getId()).getTag());
         m.start();
         m.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -107,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCompletion(MediaPlayer mediaPlayer) {
                 mediaPlayer.stop();
                 if (mediaPlayer != null) {
-                    mediaPlayer.release();
+                    mediaPlayer.stop();
                 }
             }
         });
@@ -136,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         b.setTextSize(10);
         b.setTextColor(Color.BLACK);
         b.setBackgroundColor(Color.WHITE);
-        b.setAllCaps(true); //todas las letras del botón en minúscula
+        b.setAllCaps(true); //todas las letras del botón en mayuscula
         int id = this.getResources().getIdentifier(_listaCanciones[i].getName(), "raw", this.getPackageName());
         b.setTag(id);
 
@@ -185,5 +188,9 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+    public void detener(View view)
+    {
+        if(m.isPlaying())m.stop();
     }
 }
